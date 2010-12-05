@@ -7,15 +7,36 @@
 ;; linum.el
 ;; pager.el
 ;; screen-256color.el
+;; snippet.el
+;; find-recursive.el
 ;;
 ;; undo-tree/
 ;; vimpulse/
 ;; erc/
+;; emacs-rails-reloaded/
+;; rinari
 
 
 ;; Add color to a shell running in emacs 'M-x shell'
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+;(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+;(add-ui-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; Interactively Do Things (highly recommended, but not strictly required)
+(require 'ido)
+(ido-mode t)
+;
+;; Rinari
+(add-to-list 'load-path "~/.emacs.d/site-lisp/rinari")
+(require 'rinari)
+
+;; enable emacs-rails-reloaded
+; (require 'snippet)
+; (require 'find-recursive)
+; (setq load-path (cons (expand-file-name "~/.emacs.d/site-lisp/emacs-rails-reloaded") load-path))
+; (require 'rails-autoload)
+
+;; ruby packages
+(require 'haml-mode)
 
 ;;line numbers
 (global-linum-mode 1)
@@ -87,3 +108,12 @@
 ;; delete the oldest backups backups
 (setq delete-old-versions t)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosave/" t)
+(make-directory "~/.emacs.d/backup/" t)
+
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+(custom-set-variables
+  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/\\1" t)))
+  '(backup-directory-alist '((".*" . "~/.emacs.d/backup/"))))
