@@ -1,18 +1,27 @@
 ;; Path for external packages
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
-;; This configuration assumes that the following packages exist
-;; within the load path at ~/.emacs.d/site-lisp:
+;; This configuration assumes that the following package files/directories
+;; exist within the load path at ~/.emacs.d/site-lisp:
+;;
 ;; linum.el
 ;; pager.el
 ;; screen-256color.el
-;; undo-tree.el
-;; vimpulse.el
+;;
+;; undo-tree/
+;; vimpulse/
+;; erc/
+;; emacs-rails-reloaded/
 
 
 ;; Add color to a shell running in emacs 'M-x shell'
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; enable emacs-rails-reloaded
+(setq load-path (cons
+  (expand-file-name "~/.emacs.d/site-lisp/rails-reloaded") load-path))
+(require 'rails-autoload)
 
 ;;line numbers
 (global-linum-mode 1)
