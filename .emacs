@@ -11,17 +11,11 @@
 ;; undo-tree/
 ;; vimpulse/
 ;; erc/
-;; emacs-rails-reloaded/
 
 
 ;; Add color to a shell running in emacs 'M-x shell'
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-;; enable emacs-rails-reloaded
-(setq load-path (cons
-  (expand-file-name "~/.emacs.d/site-lisp/rails-reloaded") load-path))
-(require 'rails-autoload)
 
 ;;line numbers
 (global-linum-mode 1)
