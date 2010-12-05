@@ -39,6 +39,9 @@
 
 (require 'pager)
 (require 'undo-tree)
+;; replace the standard emacs undo system with the undo tree system
+;; undo: C-_  redo: M-_
+(global-undo-tree-mode)
 
 ;; load viper and vimpu
 (require 'vimpulse)
